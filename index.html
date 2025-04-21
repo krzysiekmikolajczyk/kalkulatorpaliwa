@@ -1,65 +1,110 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <!DOCTYPE html>
-<html lang="pl">
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Obrazy obok siebie</title>
+    <title>Kalkulator kosztu przejazdu</title>
     <style>
+        /* Kontener główny dla całej zawartości */
+        .main-container {
+            display: flex;
+            align-items: flex-start; /* Wyrównanie elementów do góry */
+        }
+
+        /* Kontener dla filmu */
+        .video-container {
+            flex: 1; /* Film zajmuje 1 część dostępnej przestrzeni */
+            display: flex;
+            justify-content: flex-start; /* Film po lewej */
+            align-items: flex-start; /* Film na górze */
+            padding-right: 20px; /* Odstęp z prawej strony */
+        }
+
+        /* Stylowanie samego filmu */
+        .video-container video {
+            width: 300px; /* Szerokość filmu, dostosuj wedle potrzeby */
+            height: auto;
+        }
+
+        /* Kontener dla formularza kalkulatora i obrazów */
+        .content-container {
+            flex: 2; /* Pozostała przestrzeń dla formularza i obrazów */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+        }
+
         /* Kontener dla obrazów */
         .image-container {
             display: flex;
-            gap: 10px; /* Odstęp między obrazami */
-            justify-content: center; /* Wyśrodkowanie obrazów */
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
         }
 
         .image-container img {
-            width: 200px; /* Zmienna szerokość obrazów, możesz dostosować */
-            height: auto; /* Proporcjonalna wysokość */
+            width: 200px;
+            height: auto;
+        }
+
+        /* Stylowanie formularza */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        form label, form input, form button {
+            font-size: 16px;
+        }
+
+        #result {
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
 
-   <!-- Kontener dla obrazów -->
-    <div class="image-container">
-        <!-- Trzeci obraz po lewej -->
-        <img src="trt.webp" alt="Trzeci obraz">
-        <!-- Pierwszy obraz -->
-        <img src="panda.jpg" alt="Moje zdjęcie">
-        <!-- Drugi obraz -->
-        <img src="bc.webp" alt="Moje zdjęcie1">
+    <!-- Główna zawartość strony -->
+    <div class="main-container">
+        <!-- Kontener dla filmu -->
+        <div class="video-container">
+            <video controls>
+                <source src="subs.mp4" type="video/mp4">
+                Twoja przeglądarka nie obsługuje tagu <code>video</code>.
+            </video>
+        </div>
+
+        <!-- Kontener dla kalkulatora i obrazów -->
+        <div class="content-container">
+            <!-- Kontener dla obrazów -->
+            <div class="image-container">
+                <img src="panda.jpg" alt="Moje zdjęcie">
+                <img src="bc.webp" alt="Moje zdjęcie1">
+                <img src="trzeci_obraz.jpg" alt="Trzeci obraz">
+            </div>
+
+            <!-- Formularz kalkulatora -->
+            <h1>Kalkulator kosztu przejazdu</h1>
+            <form id="fuel-form">
+                <label for="consumption">Spalanie (l/100km):</label>
+                <input type="number" id="consumption" step="0.1" required>
+
+                <label for="distance">Dystans (km):</label>
+                <input type="number" id="distance" required>
+
+                <label for="price">Cena paliwa (zł/l):</label>
+                <input type="number" id="price" step="0.01" required>
+
+                <button type="submit">Oblicz koszt</button>
+            </form>
+
+            <div id="result"></div>
+        </div>
     </div>
 
-</body>
-</html>
-
-  
-
-  <title>Koszt przejazdu</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <h1>Kalkulator kosztu przejazdu</h1>
-
-  <form id="fuel-form">
-    <label for="consumption">Spalanie (l/100km):</label>
-    <input type="number" id="consumption" step="0.1" required>
-
-    <label for="distance">Dystans (km):</label>
-    <input type="number" id="distance" required>
-
-    <label for="price">Cena paliwa (zł/l):</label>
-    <input type="number" id="price" step="0.01" required>
-
-    <button type="submit">Oblicz koszt</button>
-  </form>
-
-  <div id="result"></div>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
