@@ -8,43 +8,36 @@
     body {
       margin: 0;
       padding: 0;
+      position: relative;
+      font-family: sans-serif;
     }
 
-    /* Główna sekcja */
-    .main-container {
-      display: flex;
-      width: 100%;
-      min-height: 100vh;
+    /* Film jako warstwa po lewej */
+    .video-absolute {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 300px;
     }
 
-    /* Film po lewej */
-    .video-container {
-      width: 300px; /* Stała szerokość filmu */
-      display: flex;
-      justify-content: flex-end;
-      align-items: flex-start;
-      padding: 20px;
-    }
-
-    .video-container video {
+    .video-absolute video {
       width: 100%;
       height: auto;
     }
 
-    /* Zawartość po prawej */
+    /* Kontener na całą zawartość — wyśrodkowana na stronie */
     .content-container {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center; /* Wyśrodkowanie całej zawartości */
-      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      text-align: center;
     }
 
     .image-container {
       display: flex;
-      gap: 10px;
       justify-content: center;
-      margin-bottom: 20px;
+      gap: 10px;
+      margin-bottom: 30px;
     }
 
     .image-container img {
@@ -55,13 +48,16 @@
     form {
       display: flex;
       flex-direction: column;
+      align-items: center;
       gap: 10px;
-      width: 100%;
-      max-width: 400px;
     }
 
-    form label, form input, form button {
+    form label,
+    form input,
+    form button {
       font-size: 16px;
+      width: 100%;
+      max-width: 300px;
     }
 
     #result {
@@ -70,39 +66,39 @@
   </style>
 </head>
 <body>
-  <div class="main-container">
-    <!-- Lewa kolumna z filmem -->
-    <div class="video-container">
-      <video controls autoplay muted>
-        <source src="subs.mp4" type="video/mp4" />
-        Twoja przeglądarka nie obsługuje tagu <code>video</code>.
-      </video>
+
+  <!-- Film po lewej stronie, nakładany absolutnie -->
+  <div class="video-absolute">
+    <video autoplay muted loop>
+      <source src="subs.mp4" type="video/mp4" />
+      Twoja przeglądarka nie obsługuje tagu <code>video</code>.
+    </video>
+  </div>
+
+  <!-- Wyśrodkowana treść -->
+  <div class="content-container">
+    <div class="image-container">
+      <img src="panda.jpg" alt="Moje zdjęcie" />
+      <img src="bc.webp" alt="Moje zdjęcie1" />
+      <img src="trt.webp" alt="Trzeci obraz" />
     </div>
 
-    <!-- Prawa kolumna z resztą zawartości -->
-    <div class="content-container">
-      <div class="image-container">
-        <img src="panda.jpg" alt="Moje zdjęcie" />
-        <img src="bc.webp" alt="Moje zdjęcie1" />
-        <img src="trt.webp" alt="Trzeci obraz" />
-      </div>
+    <h1>Kalkulator kosztu przejazdu</h1>
 
-      <h1>Kalkulator kosztu przejazdu</h1>
-      <form id="fuel-form">
-        <label for="consumption">Spalanie (l/100km):</label>
-        <input type="number" id="consumption" step="0.1" required />
+    <form id="fuel-form">
+      <label for="consumption">Spalanie (l/100km):</label>
+      <input type="number" id="consumption" step="0.1" required />
 
-        <label for="distance">Dystans (km):</label>
-        <input type="number" id="distance" required />
+      <label for="distance">Dystans (km):</label>
+      <input type="number" id="distance" required />
 
-        <label for="price">Cena paliwa (zł/l):</label>
-        <input type="number" id="price" step="0.01" required />
+      <label for="price">Cena paliwa (zł/l):</label>
+      <input type="number" id="price" step="0.01" required />
 
-        <button type="submit">Oblicz koszt</button>
-      </form>
+      <button type="submit">Oblicz koszt</button>
+    </form>
 
-      <div id="result"></div>
-    </div>
+    <div id="result"></div>
   </div>
 
   <script src="script.js"></script>
