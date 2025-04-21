@@ -12,20 +12,29 @@
       font-family: sans-serif;
     }
 
-    /* Film jako warstwa po lewej */
-    .video-absolute {
+    /* Lewy film */
+    .video-left {
       position: absolute;
       top: 20px;
       left: 20px;
       width: 300px;
     }
 
-    .video-absolute video {
+    /* Prawy film */
+    .video-right {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 300px;
+    }
+
+    .video-left video,
+    .video-right video {
       width: 100%;
       height: auto;
     }
 
-    /* Kontener na całą zawartość — wyśrodkowana na stronie */
+    /* Główna zawartość na środku */
     .content-container {
       max-width: 800px;
       margin: 0 auto;
@@ -57,50 +66,4 @@
     form button {
       font-size: 16px;
       width: 100%;
-      max-width: 300px;
-    }
-
-    #result {
-      margin-top: 20px;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Film po lewej stronie, nakładany absolutnie -->
-  <div class="video-absolute">
-    <video autoplay muted loop>
-      <source src="subs.mp4" type="video/mp4" />
-      Twoja przeglądarka nie obsługuje tagu <code>video</code>.
-    </video>
-  </div>
-
-  <!-- Wyśrodkowana treść -->
-  <div class="content-container">
-    <div class="image-container">
-      <img src="panda.jpg" alt="Moje zdjęcie" />
-      <img src="bc.webp" alt="Moje zdjęcie1" />
-      <img src="trt.webp" alt="Trzeci obraz" />
-    </div>
-
-    <h1>Kalkulator kosztu przejazdu</h1>
-
-    <form id="fuel-form">
-      <label for="consumption">Spalanie (l/100km):</label>
-      <input type="number" id="consumption" step="0.1" required />
-
-      <label for="distance">Dystans (km):</label>
-      <input type="number" id="distance" required />
-
-      <label for="price">Cena paliwa (zł/l):</label>
-      <input type="number" id="price" step="0.01" required />
-
-      <button type="submit">Oblicz koszt</button>
-    </form>
-
-    <div id="result"></div>
-  </div>
-
-  <script src="script.js"></script>
-</body>
-</html>
+      max-width
