@@ -15,9 +15,17 @@
       font-family: sans-serif;
       display: flex;
       justify-content: center;
+      background-color: white;
+      color: black;
+      transition: background-color 0.3s, color 0.3s;
     }
 
-    /* Główne opakowanie dla całej zawartości */
+    /* Tryb ciemny */
+    body.dark-theme {
+      background-color: #121212;
+      color: white;
+    }
+
     .wrapper {
       display: flex;
       max-width: 1400px;
@@ -26,7 +34,6 @@
       padding: 20px;
     }
 
-    /* Kontener na filmy */
     .video-container {
       width: 300px;
     }
@@ -36,7 +43,6 @@
       height: auto;
     }
 
-    /* Główna zawartość na środku */
     .content-container {
       flex: 1;
       padding: 0 20px;
@@ -73,9 +79,31 @@
     #result {
       margin-top: 20px;
     }
+
+    /* Przycisk motywu */
+    .theme-toggle {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background-color: #eee;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      z-index: 1000;
+    }
+
+    body.dark-theme .theme-toggle {
+      background-color: #444;
+      color: white;
+    }
   </style>
 </head>
 <body>
+
+  <!-- Przycisk zmiany motywu -->
+  <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
 
   <div class="wrapper">
     <!-- Film po lewej -->
@@ -89,10 +117,10 @@
     <!-- Zawartość główna -->
     <div class="content-container">
       <div class="image-container">
-        <img src="trt.webp" alt="Trzeci obraz" />
+        <img src="trt.webp" alt="Trzeci obraz"
         <img src="panda.jpg" alt="Moje zdjęcie" />
         <img src="bc.webp" alt="Moje zdjęcie1" />
-        
+         />
       </div>
 
       <h1>Kalkulator kosztu przejazdu</h1>
@@ -122,6 +150,21 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <!-- Skrypt do zmiany motywu -->
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('dark-theme');
+    }
+
+    // Kalkulator JS – opcjonalnie
+    document.getElementById('fuel-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const consumption = parseFloat(document.getElementById('consumption').value);
+      const distance = parseFloat(document.getElementById('distance').value);
+      const price = parseFloat(document.getElementById('price').value);
+      const cost = ((consumption / 100) * distance * price).toFixed(2);
+      document.getElementById('result').textContent = `Koszt przejazdu: ${cost} zł`;
+    });
+  </script>
 </body>
 </html>
