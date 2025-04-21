@@ -9,6 +9,8 @@
         .main-container {
             display: flex;
             align-items: flex-start; /* Wyrównanie elementów do góry */
+            justify-content: center; /* Wyśrodkowanie kontenerów */
+            width: 100%;
         }
 
         /* Kontener dla filmu */
@@ -34,6 +36,7 @@
             align-items: center;
             justify-content: flex-start;
             width: 100%;
+            margin: 0 auto; /* Wyśrodkowanie kontenera */
         }
 
         /* Kontener dla obrazów */
@@ -54,6 +57,8 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
+            width: 100%; /* Pełna szerokość formularza */
+            max-width: 600px; /* Maksymalna szerokość formularza */
         }
 
         form label, form input, form button {
@@ -81,9 +86,10 @@
         <div class="content-container">
             <!-- Kontener dla obrazów -->
             <div class="image-container">
+                <img src="trt.webp" alt="Trzeci obraz">
                 <img src="panda.jpg" alt="Moje zdjęcie">
                 <img src="bc.webp" alt="Moje zdjęcie1">
-                <img src="trt.webp" alt="Trzeci obraz">
+                
             </div>
 
             <!-- Formularz kalkulatora -->
