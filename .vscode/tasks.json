@@ -1,0 +1,22 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",                          // Nazwa zadania
+            "type": "shell",                           // Typ zadania - komenda powłoki
+            "command": "g++",                          // Komenda kompilatora
+            "args": [
+                "-g",                                 // Dodanie opcji debugowania
+                "${file}",                            // Ścieżka do aktualnie edytowanego pliku
+                "-o",                                 // Opcja wskazująca nazwę pliku wynikowego
+                "${fileDirname}/a.exe"                // Zapisz plik wykonywalny jako a.exe w tym samym folderze
+            ],
+            "group": {
+                "kind": "build",                      // Grupa zadań kompilacji
+                "isDefault": true                     // Ustawienie zadania kompilacji jako domyślne
+            },
+            "problemMatcher": ["$gcc"],                 // Użycie wbudowanego narzędzia do analizowania błędów kompilacji
+            "detail": "Generated task by Debugger"      // Opis zadania
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug C++",                         // Nazwa konfiguracji
+            "type": "cppdbg",                            // Typ konfiguracji dla C++
+            "request": "launch",                         // Typ żądania - uruchomienie programu
+            "program": "${workspaceFolder}/a.exe",       // Ścieżka do pliku wykonywalnego
+            "args": [],                                  // Argumenty przekazywane do programu (możesz je dodać, jeśli chcesz)
+            "stopAtEntry": false,                        // Nie zatrzymuj się na początku programu
+            "cwd": "${workspaceFolder}",                 // Katalog roboczy (folder projektu)
+            "environment": [],                           // Zmienne środowiskowe (jeśli są potrzebne)
+            "externalConsole": true,                    // Nie używaj zewnętrznej konsoli
+            "MIMode": "gdb",                             // Debugger - gdb
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",  // Włączenie ładniejszego formatowania wyników w gdb
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": false
+                }
+            ],
+            "miDebuggerPath": "C:\\MinGW\\bin\\gdb.exe",  // Ścieżka do debuggera gdb (zmień ścieżkę, jeśli jest inna)
+            "preLaunchTask": "build",                     // Ustawienie zadania kompilacji przed uruchomieniem programu
+            "sourceFileMap": {
+                "/mnt/c/": "${workspaceFolder}/"         // Mapa plików źródłowych (przydatna w przypadku WSL)
+            }
+        }
+    ]
+}
