@@ -5,40 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kalkulator kosztu przejazdu</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       padding: 0;
-      position: relative;
       font-family: sans-serif;
+      display: flex;
+      justify-content: center;
     }
 
-    /* Lewy film */
-    .video-left {
-      position: absolute;
-      top: 20px;
-      left: 20px;
+    /* Główne opakowanie dla całej zawartości */
+    .wrapper {
+      display: flex;
+      max-width: 1400px;
+      width: 100%;
+      justify-content: space-between;
+      padding: 20px;
+    }
+
+    /* Kontener na filmy */
+    .video-container {
       width: 300px;
     }
 
-    /* Prawy film */
-    .video-right {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 300px;
-    }
-
-    .video-left video,
-    .video-right video {
+    .video-container video {
       width: 100%;
       height: auto;
     }
 
     /* Główna zawartość na środku */
     .content-container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 40px 20px;
+      flex: 1;
+      padding: 0 20px;
       text-align: center;
     }
 
@@ -66,4 +67,60 @@
     form button {
       font-size: 16px;
       width: 100%;
-      max-width
+      max-width: 300px;
+    }
+
+    #result {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <!-- Film po lewej -->
+    <div class="video-container">
+      <video autoplay muted loop>
+        <source src="subs.mp4" type="video/mp4" />
+        Twoja przeglądarka nie obsługuje tagu <code>video</code>.
+      </video>
+    </div>
+
+    <!-- Zawartość główna -->
+    <div class="content-container">
+      <div class="image-container">
+        <img src="panda.jpg" alt="Moje zdjęcie" />
+        <img src="bc.webp" alt="Moje zdjęcie1" />
+        <img src="trt.webp" alt="Trzeci obraz" />
+      </div>
+
+      <h1>Kalkulator kosztu przejazdu</h1>
+
+      <form id="fuel-form">
+        <label for="consumption">Spalanie (l/100km):</label>
+        <input type="number" id="consumption" step="0.1" required />
+
+        <label for="distance">Dystans (km):</label>
+        <input type="number" id="distance" required />
+
+        <label for="price">Cena paliwa (zł/l):</label>
+        <input type="number" id="price" step="0.01" required />
+
+        <button type="submit">Oblicz koszt</button>
+      </form>
+
+      <div id="result"></div>
+    </div>
+
+    <!-- Film po prawej -->
+    <div class="video-container">
+      <video autoplay muted loop>
+        <source src="subs.mp4" type="video/mp4" />
+        Twoja przeglądarka nie obsługuje tagu <code>video</code>.
+      </video>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
